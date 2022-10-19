@@ -11,18 +11,14 @@ btnPlay.addEventListener('click', function(){
   document.getElementById('n-pc').classList.remove('d-none');
   //legge il numero inserito dall'utente e l'opzione scelta
   const userNumber = parseInt(el('#user-number').value);
-  console.log("numero utente: "+ userNumber);
   const userOption = el('#pari-dispari').value;
-  console.log("opzione: "+userOption);
   
   //genera e scrive il numero del pc
   const pcNumber = getRndInteger(min,max);
-  console.log("numero pc: "+ pcNumber);
   document.getElementById('n-pc').innerText = pcNumber;
 
   //esegue la somma e controlla se è pari
   const somma = pcNumber + userNumber;
-  console.log("somma: "+ somma);
   const pari= evenControl(somma);
 
   //se la somma dei due numeri è pari e l'utente ha scelto pari o se la somma dei due numeri è dispari e l'utente ha scelto dispari vince l'utente altrimenti il pc
@@ -55,9 +51,6 @@ function evenControl(n){
 
   if(n % 2 !== 0){
     pari = false;
-    console.log("dispari");
-  } else {
-    console.log("pari");
   }
   
   return pari;
