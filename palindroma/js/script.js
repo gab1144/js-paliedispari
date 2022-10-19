@@ -1,14 +1,10 @@
 const el = document.querySelector.bind(document);
-
-
 const verifyButton = el('#verifica');
 
 verifyButton.addEventListener('click', function(){
-
   word= readValueById("input-word");
-
   const palindromo= verifyPalindormo(word);
-    
+  
   const outputSpan= el('#output');
   outputSpan.classList.remove('d-none');
   
@@ -21,7 +17,7 @@ verifyButton.addEventListener('click', function(){
 
 
 function readValueById (id) {
-  return el('#'+ id).value;
+  return document.getElementById(id).value;
 }
 
 function verifyPalindormo (word) {
