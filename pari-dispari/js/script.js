@@ -5,7 +5,42 @@ const btnPlay = document.getElementById('gioca-utente');
 const min = 1;
 const max = 5;
 
+let counterBtn=0;
+
+//esegue la funzione play e assegna il valore 1 a counterBtn in modo da sapere che è già stata giocata una partita
 btnPlay.addEventListener('click', function(){
+  play();
+  counterBtn = 1;
+});
+
+document.addEventListener('keypress', (event)=>{
+  let keyCode = event.keyCode;
+
+  // se viene premuto enter
+  if(keyCode === 13) {
+    //se il contatore ha valore 0 vuol dire che non è ancora stata avviata la partita quindi esegue l'evento click di btnPlay
+    if(counterBtn=== 0){
+      // call click function of the buttonn 
+      btnPlay.click();
+      counterBtn = 1;
+    } else {
+      //se il contatore ha valore 1 vuol dire che è già stata giocata la partita quindi esegue l'evento click di newMatch
+      newMatch.click();
+      counterBtn = 0;
+    }
+  }
+});
+
+//esegue un reset della pagina per giocare una nuova partita
+newMatch.addEventListener('click', function(){
+  document.getElementById('esito').classList.add('d-none');
+  document.getElementById('n-pc').classList.add('d-none');
+  btnPlay.classList.remove('d-none');
+  counterBtn = 0;
+});
+
+//esegue il gioco
+function play () {
   let output;
 
   //legge il numero inserito dall'utente e l'opzione scelta
@@ -34,14 +69,8 @@ btnPlay.addEventListener('click', function(){
 
   //nasconde il bottone "Gioca"
   btnPlay.classList.add('d-none');
-});
+}
 
-//esegue un reset della pagina per giocare una nuova partita
-newMatch.addEventListener('click', function(){
-  document.getElementById('esito').classList.add('d-none');
-  document.getElementById('n-pc').classList.add('d-none');
-  btnPlay.classList.remove('d-none');
-});
 
 //genera e restituisce un numero intero tra min e max
 function getRndInteger(min, max) {
