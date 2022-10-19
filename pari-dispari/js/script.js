@@ -15,7 +15,7 @@ btnPlay.addEventListener('click', function(){
   //genera e scrive il numero del pc
   const pcNumber = getRndInteger(min,max);
   document.getElementById('n-pc').classList.remove('d-none');
-  document.getElementById('n-pc').innerText = pcNumber;
+  innerTextById('n-pc', pcNumber);
 
   //esegue la somma e controlla se è pari
   const somma = pcNumber + userNumber;
@@ -29,7 +29,7 @@ btnPlay.addEventListener('click', function(){
   }
 
   //stampa l'esito
-  document.getElementById('esito').innerHTML = output;
+  innerTextById('esito', output);
   document.getElementById('esito').classList.remove('d-none');
 
   //nasconde il bottone "Gioca"
@@ -49,7 +49,7 @@ function getRndInteger(min, max) {
 }
 
 //controlla se il numero è pari; se il numero è pari restituisce true altrimenti false
-function evenControl(n){
+function evenControl(n) {
   let pari = true;
 
   if(n % 2 !== 0){
@@ -57,4 +57,9 @@ function evenControl(n){
   }
   
   return pari;
+}
+
+//fa un innerText di "content" nell'elemento con id "id"
+function innerTextById(id, content) {
+  document.getElementById(id).innerText = content;
 }
