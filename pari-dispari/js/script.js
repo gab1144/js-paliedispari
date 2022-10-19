@@ -8,13 +8,13 @@ const max = 5;
 btnPlay.addEventListener('click', function(){
   let output;
 
-  document.getElementById('n-pc').classList.remove('d-none');
   //legge il numero inserito dall'utente e l'opzione scelta
   const userNumber = parseInt(el('#user-number').value);
   const userOption = el('#pari-dispari').value;
   
   //genera e scrive il numero del pc
   const pcNumber = getRndInteger(min,max);
+  document.getElementById('n-pc').classList.remove('d-none');
   document.getElementById('n-pc').innerText = pcNumber;
 
   //esegue la somma e controlla se è pari
@@ -28,8 +28,11 @@ btnPlay.addEventListener('click', function(){
     output = "Vince il pc";
   }
 
+  //stampa l'esito
   document.getElementById('esito').innerHTML = output;
   document.getElementById('esito').classList.remove('d-none');
+
+  //nasconde il bottone "Gioca"
   btnPlay.classList.add('d-none');
 });
 
